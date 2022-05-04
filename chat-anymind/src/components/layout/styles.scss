@@ -1,0 +1,13 @@
+.layout-container {
+    height: 100%;
+    width: 100%;
+    &__wrapper {
+        height: 100%;
+        &__side-menu{
+            border-right: 1px solid lightgrey;
+        }
+        &__chat-menu{
+
+        }
+    }
+}

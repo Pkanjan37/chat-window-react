@@ -1,0 +1,11 @@
+overwrite: true
+schema: "https://angular-test-backend-yc4c5cvnnq-an.a.run.app/graphql"
+documents: "./src/graphql/**/*.ts"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHooks: true
