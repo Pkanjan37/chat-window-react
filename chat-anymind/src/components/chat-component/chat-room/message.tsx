@@ -8,7 +8,7 @@ import { ResendingMessage } from "./index";
 interface MessageProp {
   isSentSuccess?: boolean | undefined;
   currentUser: UserId;
-  messageId: string;
+  messageId: string | undefined;
   text: string;
   datetime: string;
   userId: UserId;
@@ -25,13 +25,6 @@ const Messages = (props: MessageProp) => {
     localDate.getMinutes().toString().length < 2
       ? `0${localDate.getMinutes()}`
       : localDate.getMinutes().toString();
-  console.log(
-    props.messageId,
-    "msgggggggg id",
-    props.datetime,
-    ">>>",
-    props.text
-  );
 
   return (
     <div

@@ -11,7 +11,7 @@ interface MessageProp {
 const Messages = (props: MessageProp) => {
   return (
     <div className="messages-container">
-      {props.messageList.map((item: any) => {
+      {props.messageList.map((item: MessageData) => {
         return (
           <Message
             messageId={item.messageId}

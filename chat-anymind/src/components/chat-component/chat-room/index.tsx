@@ -58,16 +58,11 @@ const ChatRoom = (props: ChatRoomProp) => {
       text: typingMsg || modalVisibilityByMsgTimestampAndMsg?.text || "",
     },
   });
-  console.log(
-    props.loadingMsg,
-    "?????????????????????????//",
-    props.messageList
-  );
+
   useEffect(() => {
     if (props.messageList.length && chatRef?.current) {
       const current: any = chatRef.current;
       current.scrollIntoView({ behavior: "smooth" });
-      console.log("SCROLLLLLLL?????????");
     }
   }, [props.messageList]);
 
@@ -77,10 +72,8 @@ const ChatRoom = (props: ChatRoomProp) => {
         const newSendMessage = { ...item.data?.MessagePost, isSuccess: true };
         props.onUpdateMessageList(newSendMessage as any);
         setTypingMsg("");
-        console.log(item, " resssssssssssssss");
       })
       .catch((error) => {
-        console.log(error, " errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         setTypingMsg("");
         const newSendMessage: MessageData = {
           messageId: undefined,
@@ -105,23 +98,19 @@ const ChatRoom = (props: ChatRoomProp) => {
           ...newSendMessage[updateIndex],
           isSuccess: true,
         };
-        console.log(newSendMessage, " new msggggggggggggggggggggggg");
 
         props.onReplaceMessageList(newSendMessage);
       })
       .catch((error) => {
         errorMsg();
-        console.log(error, " errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
       });
   }
 
   function handleResentMessage() {
-    console.log(modalVisibilityByMsgTimestampAndMsg, "resentttt");
     onResentMessage();
     setModalVisibilityByMsgTimestampAndMsg(undefined);
   }
   function handleDiscardMessage() {
-    console.log(modalVisibilityByMsgTimestampAndMsg, "unsentttt");
     const removedMsg = props.messageList.filter(
       (item) => item.datetime !== modalVisibilityByMsgTimestampAndMsg?.datetime
     );
@@ -152,7 +141,6 @@ const ChatRoom = (props: ChatRoomProp) => {
                 messageList={props.messageList}
                 currentUser={props.selectingUser}
                 onClickFailedMsg={(msg: ResendingMessage) => {
-                  console.log(msg, ">>>>>>>>>>>>>>");
                   setModalVisibilityByMsgTimestampAndMsg(msg);
                 }}
               />
@@ -177,7 +165,7 @@ const ChatRoom = (props: ChatRoomProp) => {
         <div className="chat-room-container__footer">
           <TextArea
             value={typingMsg}
-            onChange={(e: any) => {
+            onChange={(e) => {
               setTypingMsg(e.target.value);
             }}
             onKeyDown={(e) => {

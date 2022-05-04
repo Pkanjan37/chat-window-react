@@ -76,11 +76,6 @@ const ChatLayout = () => {
   //   }
 
   function handleGetOlderMsg() {
-    console.log(
-      "?????????????????????????????????? old",
-      messageList?.[selectingChannel]?.[0]?.messageId || ""
-    );
-
     getOldMsg()
       .then((response) => {
         setMessageList({
@@ -94,7 +89,6 @@ const ChatLayout = () => {
         });
       })
       .catch((error) => {
-        console.log(error, "olddddddddddddddd errr");
         errorMsg();
       });
   }
@@ -113,7 +107,6 @@ const ChatLayout = () => {
         });
       })
       .catch((error) => {
-        console.log(error, "newwwwwwwwwwwww err");
         errorMsg();
       });
   }
